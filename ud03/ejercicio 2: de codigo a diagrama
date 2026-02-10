@@ -1,0 +1,214 @@
+```mermaid
+
+classDiagram
+	class Persona{
+		+nombre: String
+		+direccion: String
+		+telefono: Int
+		+alias: String
+		+correoElectronico: String
+	
+		+getNombre(): String
+		+setNombre(nombre: String)
+		+getDireccion(): String
+		+setDireccion(direccion: String)
+		+getTelefono(): int
+		+setTelefono(telefono: Int)
+		+getAlias(): String
+		+setAlias(alias: String)
+		+getCorreoElectronico(): String
+		+setCorreoElectronico(correoElectronico: String)
+	}
+	
+	class Alumno{
+		-notaMedia: float
+		+getNotaMedia(): float
+		+setNotaMedia(notaMedia: float)
+	}
+	
+	class Profesor{
+		-NPR: int
+	}
+	
+	class CicloFormativo{
+		-nombre: String
+		-descripcion: String
+		-horas: Int
+		-infCompetenciaProfesionales: CompetenciaProfesional[]
+		
+		+getNombre(): String
+		+setNombre(nombre: String)
+		+getDireccion(): String
+		+setDireccion(direccion: String)
+		+getHoras():Int
+		+setHoras(horas: int)
+		+getInfCompeProfesionales(): CompetenciaProfesional[]
+	}
+	
+	class CompetenciaProfesional{
+		-descripcion:String
+		-infModuFormat: ModuloFormativo[]
+		
+		+getDescripcion(): String
+		+setDescripcion(descripcion: String)
+		+getInfModuForm(): ModuloFormativo[]
+	}
+	
+	class Examen{
+		-preguntas: Pregunta[30]
+		+getPreguntas(): Pregunta[]
+	}
+	
+	class ModuloFormativo{
+		-nombre: String
+		-duracion: int
+		-contenido: String
+		-infAlumMatriculados: Alumno[]
+		-profesorImparte: Profesor
+		-examen: Examen
+		-tarea: Tarea
+				
+		+getNombre(): String
+		+setNombre(nombre:String)
+		+getDuracion(): int
+		+setDuracion(duracion:int)
+		+getContenido(): String
+		+setContenido(contenido: String)
+		+getInfAlumMatriculados(): Alumno[]
+		+getProfesorImparte(): Profesor
+		+setProfesorImparte(profesorImparte: Profesor)
+		+getExamen(): Examen
+		+setExamen(examen:Examen)
+		+getTarea(): Tarea
+		+setTarea(tarea:Tarea)	
+	}
+	
+	class Pregunta{
+		-enunciado: String
+		-respuestas: String[]
+		-respuestaValida: int
+		-examenesDondeSeUsa: Examen[]
+		
+		+getEnunciado(): String
+		+setEnunciado(enunciado: String)
+		+getRespuestas(): String[]
+		+getRespuestaValida(): int
+		+setRespuestaValida(respuestaValida: int)
+		+getExamenesDondeSeUsa():Examen[]
+	}
+	
+	class Tarea{
+		-descripcion: String
+		
+		+getDescripcion(): String
+		+setDescripcion(descripcion: String)
+	}
+	
+	Persona <|-- Alumno
+	Persona <|-- Profesor
+	
+	CicloFormativo "1"--> "N" CompetenciaProfesional : imparte
+	CompetenciaProfesional "1"-->"N" ModuloFormativo : enseña
+	ModuloFormativo "1"-->"N" Alumno : estudian
+	ModuloFormativo "1"-->"1" Profesor : imparte
+	ModuloFormativo "1"-->"1" Examen : realiza
+	ModuloFormativo "1"-->"1" Tarea : propone						
+	Examen "1"-->"30" Pregunta : contiene
+	Pregunta "1"-->"N" Examen : Se usa
+
+	class Alumno{
+		-notaMedia: float
+		+getNotaMedia(): float
+		+setNotaMedia(notaMedia: float)
+	}
+	
+	class Profesor{
+		-NPR: int
+	}
+	
+	class CicloFormativo{
+		-nombre: String
+		-descripcion: String
+		-horas: Int
+		-infCompetenciaProfesionales: CompetenciaProfesional[]
+		
+		+getNombre(): String
+		+setNombre(nombre: String)
+		+getDireccion(): String
+		+setDireccion(direccion: String)
+		+getHoras():Int
+		+setHoras(horas: int)
+		+getInfCompeProfesionales(): CompetenciaProfesional[]
+	}
+	
+	class CompetenciaProfesional{
+		-descripcion:String
+		-infModuFormat: ModuloFormativo[]
+		
+		+getDescripcion(): String
+		+setDescripcion(descripcion: String)
+		+getInfModuForm(): ModuloFormativo[]
+	}
+	
+	class Examen{
+		-preguntas: Pregunta[30]
+		+getPreguntas(): Pregunta[]
+	}
+	
+	class ModuloFormativo{
+		-nombre: String
+		-duracion: int
+		-contenido: String
+		-infAlumMatriculados: Alumno[]
+		-profesorImparte: Profesor
+		-examen: Examen
+		-tarea: Tarea
+				
+		+getNombre(): String
+		+setNombre(nombre:String)
+		+getDuracion(): int
+		+setDuracion(duracion:int)
+		+getContenido(): String
+		+setContenido(contenido: String)
+		+getInfAlumMatriculados(): Alumno[]
+		+getProfesorImparte(): Profesor
+		+setProfesorImparte(profesorImparte: Profesor)
+		+getExamen(): Examen
+		+setExamen(examen:Examen)
+		+getTarea(): Tarea
+		+setTarea(tarea:Tarea)	
+	}
+	
+	class Pregunta{
+		-enunciado: String
+		-respuestas: String[]
+		-respuestaValida: int
+		-examenesDondeSeUsa: Examen[]
+		
+		+getEnunciado(): String
+		+setEnunciado(enunciado: String)
+		+getRespuestas(): String[]
+		+getRespuestaValida(): int
+		+setRespuestaValida(respuestaValida: int)
+		+getExamenesDondeSeUsa():Examen[]
+	}
+	
+	class Tarea{
+		-descripcion: String
+		
+		+getDescripcion(): String
+		+setDescripcion(descripcion: String)
+	}
+	
+	Persona <|-- Alumno
+	Persona <|-- Profesor
+	
+	CicloFormativo "1"--> "N" CompetenciaProfesional : imparte
+	CompetenciaProfesional "1"-->"N" ModuloFormativo : enseña
+	ModuloFormativo "1"-->"N" Alumno : estudian
+	ModuloFormativo "1"-->"1" Profesor : imparte
+	ModuloFormativo "1"-->"1" Examen : realiza
+	ModuloFormativo "1"-->"1" Tarea : propone						
+	Examen "1"-->"30" Pregunta : contiene
+	Pregunta "1"-->"N" Examen : Se usa
+```
