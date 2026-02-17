@@ -1,0 +1,52 @@
+classDiagram
+    class Conferencia{
+        +sesions: List[sesion]
+        +inscripciones: List[Inscripcion]
+        +confirmar(inscripcion: Inscripcion)
+        +cancelar(inscripcion: Inscripcion)
+    }
+    class Sesion{
+        +data: String
+        +hora_inicio: Int
+        +presentes: Int
+    }
+    class Participante{
+        +edad : int
+        +nombre : String
+        +inscribir(conferencia : Conferencia): Inscripcion
+    }
+    class Orador{
+        +presentar(artigoCientifico: ArtigoCientifico)
+    }
+    class Publico{
+        +asistir(Sesion)
+    }
+    class Inscripcion{
+        +conferencia: Conferencia
+        +participante: Participante
+        +confirmada: Boolean
+        +cancelada: Boolean
+    }
+    class ArtigoCientifico{
+        +tema: String
+        +curto: Boolean
+        +longo: Boolean
+        +presentacion: String
+    }
+    class Autor{
+        +nome : String
+        +idade : int
+        +artigosPresentados: List[ArtigoCientifico]
+        +xera():ArtigoCientifico
+
+    }
+
+    Sesion "N" *-- "1" Conferencia : existir
+    Participante "1" --> "N" Inscripcion : formula
+    Conferencia "1" --> "N" Inscripcion : procesa
+    ArtigoCientifico "N" *-- "1" Autor : xera
+    Autor "1" --> "N" Conferencia : artigos presentados
+    Participante <|-- Orador
+    Participante <|-- Publico
+    Participante "1" --> "N" Conferencia : inscribese
+    Sesion "1" --> "N" ArtigoCientifico : presentase
