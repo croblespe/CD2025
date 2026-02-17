@@ -172,7 +172,7 @@ public class ArtigoCientifico {
 }
 
 ```
-8. **Autor**: Es el creador del articulo cientifico. Contiene un registro de todos sus articulos asi como un metodo que los genera, asignado al atributo ***ArticuloCientifico.autor** su propia instancia.
+8. **Autor**: Es el creador del articulo cientifico. Contiene un registro de todos sus articulos asi como un metodo que los genera, asignando al atributo ***ArticuloCientifico.autor** su propia instancia.
 ```java
 package com.Candido.ConferenciaCientifica;
 
