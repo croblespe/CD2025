@@ -1,0 +1,23 @@
+classDiagram
+    class Main{
+        +main(String[] args)
+        +circulo: Circulo
+    }
+    class Circulo{
+        -x: Int
+        -y: Int
+        -radio: double
+
+        +establecerX(x : Int):void
+        +obtenerX(): Int
+        +establecerY(y: Int):void
+        +obtenerY():Int
+        +establecerRadio(radio:double)
+        +obtenerRadio():double
+        +obtenerDiametro():double
+        +obtenerCircunferencia():double
+        +obtenerArea():double
+        +toString():String
+    }
+
+    Main --> Circulo : "usa"
